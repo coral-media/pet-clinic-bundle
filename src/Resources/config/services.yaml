@@ -30,3 +30,8 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    CoralMedia\Bundle\PetClinicBundle\OpenApi\DataPersister\PetDataPersister:
+        decorates: 'api_platform.doctrine.orm.data_persister'
+        arguments:
+            - '@CoralMedia\Bundle\PetClinicBundle\OpenApi\DataPersister\PetDataPersister.inner'
+        tags: [ 'api_platform.data_persister' ]

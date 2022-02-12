@@ -5,16 +5,20 @@ declare(strict_types=1);
 namespace CoralMedia\Bundle\PetClinicBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use CoralMedia\Bundle\PetClinicBundle\Repository\OwnerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=OwnerRepository::class)
  * @ORM\Table(name="`pc_owners`")
  * @ApiResource(
- *     routePrefix="/pet-clinic"
+ *     routePrefix="/pet-clinic",
+ *     normalizationContext={"groups"={"owner:read", "pet:read"}},
+ *     denormalizationContext={"groups"={"owner:write"}},
  * )
  */
 class Owner
@@ -23,26 +27,32 @@ class Owner
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"owner:read"})
      */
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Groups({"owner:read", "owner:write"})
      */
     private string $firstName;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Groups({"owner:read", "owner:write"})
      */
     private string $lastName;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups({"owner:read", "owner:write"})
      */
     private string $telephone;
 
     /**
      * @ORM\OneToMany(targetEntity=Pet::class, mappedBy="owner")
+     * @Groups({"owner:read", "pet:read"})
+     * @ApiSubresource()
      */
     private Collection $pets;
 

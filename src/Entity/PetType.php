@@ -5,16 +5,20 @@ declare(strict_types=1);
 namespace CoralMedia\Bundle\PetClinicBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use CoralMedia\Bundle\PetClinicBundle\Repository\PetTypeRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PetTypeRepository::class)
  * @ORM\Table(name="`pc_pet_types`")
  * @ApiResource(
- *     routePrefix="/pet-clinic"
+ *     routePrefix="/pet-clinic",
+ *     normalizationContext={"groups"={"pet_type:read", "pet:read"}},
+ *     denormalizationContext={"groups"={"pet_type:write"}},
  * )
  */
 class PetType
@@ -23,16 +27,20 @@ class PetType
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"pet_type:read"})
      */
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Groups({"pet_type:read", "pet_type:write"})
      */
     private string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Pet::class, mappedBy="petType")
+     * @Groups({"pet_type:read", "pet:read"})
+     * @ApiSubresource()
      */
     private Collection $pets;
 

@@ -1,0 +1,28 @@
+{
+    "name": "coral-media/pet-clinic-bundle",
+    "description": "Pet clinic demo bundle.",
+    "version": "0.1.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafael Ernesto Espinosa Santiesteban <@rernesto>",
+            "email": "rernesto.espinosa@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CoralMedia\\Bundle\\PetClinicBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CoralMedia\\Bundle\\PetClinicBundle\\Test\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^5.3"
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "bundles/coralmediapetclinic/runtime.js": "/runtime.js",
+  "bundles/coralmediapetclinic/owners/CoralMedia.PetClinic.Owners.Grid.js": "/owners/CoralMedia.PetClinic.Owners.Grid.js",
+  "bundles/coralmediapetclinic/pet-types/CoralMedia.PetClinic.PetTypes.Grid.js": "/pet-types/CoralMedia.PetClinic.PetTypes.Grid.js",
+  "bundles/coralmediapetclinic/pet-types/CoralMedia.PetClinic.PetTypes.Module.js": "/pet-types/CoralMedia.PetClinic.PetTypes.Module.js",
+  "bundles/coralmediapetclinic/owners/CoralMedia.PetClinic.Owners.Module.js": "/owners/CoralMedia.PetClinic.Owners.Module.js",
+  "bundles/coralmediapetclinic/owners/CoralMedia.PetClinic.Owners.Form.js": "/owners/CoralMedia.PetClinic.Owners.Form.js",
+  "bundles/coralmediapetclinic/pet-types/CoralMedia.PetClinic.PetTypes.Form.js": "/pet-types/CoralMedia.PetClinic.PetTypes.Form.js",
+  "bundles/coralmediapetclinic/app.js": "/app.js"
+}
